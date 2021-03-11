@@ -2,14 +2,7 @@
 
 How to run:
 
-### cd server
+### cd server - ### npm i - ### npm start
 
-### npm i
+### cd chat - ### npm i - ### npm start
 
-### npm start
-
-### cd chat
-
-### npm i
-
-### npm start
