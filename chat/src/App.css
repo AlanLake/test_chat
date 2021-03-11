@@ -1,0 +1,27 @@
+.usersList {
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  box-sizing: border-box;
+  display: flex;
+
+  justify-content: center;
+}
+.chat {
+  max-height: 100vh;
+}
+.messageBox {
+  max-height: 60vh;
+  width: 50vw;
+  overflow: auto;
+}
+
+.join-component {
+  margin: 45vh;
+}
+
+.message-input {
+  margin-top: 2vh;
+}
