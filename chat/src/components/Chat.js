@@ -32,12 +32,6 @@ export default function Chat({ location }) {
     socket.on("message", (message) => {
       setMessages([...messages, message]);
     });
-    return (() => {
-      socket.off()
-    })
-  }, [messages]);
-
-  useEffect(() => {
     socket.on("roomData", ({ users }) => {
       setUsersInRoom([
         users.map((name) => {
@@ -46,7 +40,10 @@ export default function Chat({ location }) {
       ]);
       setLoaded(true);
     });
-  }, [usersInRoom]);
+    return () => {
+      socket.off();
+    };
+  }, [messages, usersInRoom]);
 
   const sendMessage = (event) => {
     if (message) {
@@ -104,7 +101,7 @@ export default function Chat({ location }) {
           })}
         </Transition.Group>
       </div>
-      <div className='message-input'>
+      <div className="message-input">
         <Input
           type="text"
           value={message}
