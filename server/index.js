@@ -53,7 +53,6 @@ io.on("connect", (socket) => {
 
   socket.on("disconnect", () => {
     const user = removeUser(socket.id);
-    console.log(user);
     if (user) {
       io.to(user.room).emit("message", {
         user: "Admin",
@@ -66,13 +65,6 @@ io.on("connect", (socket) => {
     }
   });
 
-  socket.on("offer", (payload) => {
-    io.to(payload.target).emit("offer", payload);
-  });
-
-  socket.on("answer", (payload) => {
-    io.to(payload.target).emit("answer", payload);
-  });
 });
 
 server.listen(PORT, () => console.log(`Server started on port ${PORT}`));

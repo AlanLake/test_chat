@@ -26,6 +26,11 @@ export default function Chat({ location }) {
         window.location.href = `http://localhost:3000/chat?name=${newName}&room=${room}`;
       }
     });
+    
+    return (() => {
+      socket.emit('disconnect')
+      socket.off()
+    })
   }, [location.search, ENDPOINT]);
 
   useEffect(() => {
